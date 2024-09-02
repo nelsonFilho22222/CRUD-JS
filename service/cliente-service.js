@@ -1,6 +1,3 @@
-const http = new XMLHttpRequest();
-
-
 const criaNovaLinha = (nome, email) => {
     const linhaNovoCliente = document.createElement('tr');
 
@@ -20,48 +17,51 @@ const criaNovaLinha = (nome, email) => {
     return linhaNovoCliente; // Retorna a linha criada
 };
 
-
-
-http.open("GET", "http://localhost:3000/profile");
-http.send();
+//
+//
+// http.open("GET", "http://localhost:3000/profile");
+// http.send();
 
 const tabela = document.querySelector('[data-tabela]');
 
 
-const listaCLientes = () => {
+
+const listaClientes = () => {
     const promise = new Promise((resolve, reject) => {
         const http = new XMLHttpRequest();
 
         http.open('GET', 'http://localhost:3000/profile');
-        http.send()
+        http.send();
 
         http.onload = () => {
-            if(http >= http.status >= 200){
-                reject(JSON.parse(http.response))
+            if (http.status >= 400) { // Verifica se houve erro
+                reject(JSON.parse(http.response));
             } else {
                 resolve(JSON.parse(http.response));
             }
-            return promise;
-        }
-
-
-    })
-}
-
-http.onload = () => {
-    const data = ;
-    data.forEach(elemento => {
-        const novaLinha = criaNovaLinha(elemento.nome, elemento.email); // Cria a linha
-        tabela.appendChild(novaLinha); // Adiciona a linha à tabela
+        };
     });
+    // console.log(promise)
+    return promise;
 };
 
 
+listaClientes()
+    .then(data => { // Se a requisição for bem-sucedida
+        data.forEach(elemento => {
+            const novaLinha = criaNovaLinha(elemento.nome, elemento.email);
+            tabela.appendChild(novaLinha);
+        });
+    })
+    .catch(error => { // Se a requisição falhar
+        console.error("Erro ao obter dados:", error);
+    });
 
 
 
 
-// http.onerror = () => {
-//     console.error("Erro ao fazer a requisição.");
-// };
+
+http.onerror = () => {
+    console.error("Erro ao fazer a requisição.");
+};
 
