@@ -1,4 +1,4 @@
-import { clienteService } from '../service/clienteService'
+import { clienteService } from '../service/clienteService.js'
 
 const criaNovaLinha = (nome, email) => {
     const linhaNovoCliente = document.createElement('tr')
