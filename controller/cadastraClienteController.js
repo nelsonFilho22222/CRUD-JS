@@ -5,14 +5,24 @@ import { clienteService } from '../service/clienteService.js';
 
 const formulario = document.querySelector('[data-form]')
 
-formulario.addEventListener('submit',  (event) => {
-    event.preventDefault();
+formulario.addEventListener('submit',  (evento) => {
+    evento.preventDefault();
 
-    const nome = event.target.querySelector('[data-nome]').value;
-    const email = event.target.querySelector('[data-email]').value;
+    const nome = evento.target.querySelector('[data-nome]').value;
+    const email = evento.target.querySelector('[data-email]').value;
 
-    criaCliente(nome, email)
+
+    clienteService.criaCliente(nome, email)
         .then(() => {
             window.location.href = '../telas/cadastro_concluido.html';
         })
 });
+
+
+const tabela = document.querySelector('[data-tabela]')
+
+clienteService.listaClientes()
+    .then(data => {
+        data.forEach(elemento => {
+            tabela.appendChild(criaNovaLinha(elemento.nome,elemento.email))
+        })})

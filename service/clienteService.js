@@ -11,7 +11,7 @@ const criaCliente = (nome, email) => {
     return fetch('http://localhost:3000/profile', {
         method: 'POST',
         headers: {
-            'content-type': 'application/json',
+            'Content-Type' : 'application/json',
         },
         body: JSON.stringify({
             nome: nome,
@@ -19,9 +19,9 @@ const criaCliente = (nome, email) => {
         })
     })
         .then(resposta => {
-            return resposta.body
+        return resposta.body
         })
-}
+};
 
 export const clienteService = {
     listaCliente,

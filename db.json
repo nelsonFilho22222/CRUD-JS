@@ -3,23 +3,27 @@
     {
       "nome": "felipe",
       "email": "felipe@rothmans.com",
-      "id": 1
+      "id": "1"
     },
     {
       "nome": "Nelson",
       "email": "nelson@rothmans.com",
-      "id": 2
+      "id": "2"
     },
     {
       "nome": "Carlos",
       "email": "carlos@rothmans.com",
-      "id": 3
+      "id": "3"
     },
     {
       "nome": "João",
       "email": "joao@rothmans.com",
-      "id": 4
+      "id": "4"
+    },
+    {
+      "id": "357a",
+      "nome": "Nelson ",
+      "email": "nelsoncamarafilho@proton.me"
     }
-
   ]
 }
