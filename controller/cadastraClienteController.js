@@ -26,3 +26,4 @@ clienteService.listaClientes()
         data.forEach(elemento => {
             tabela.appendChild(criaNovaLinha(elemento.nome,elemento.email))
         })})
+
